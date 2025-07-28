@@ -1,0 +1,142 @@
+# Creating a PHP lesson file on Object-Oriented Programming (OOP) with commented explanations
+oop_php_lesson = """
+<?php
+// ===============================
+// PHP OBJECT-ORIENTED PROGRAMMING (OOP) LESSON
+// ===============================
+
+// OOP allows you to structure your PHP code using objects and classes.
+// This helps in organizing code, reusing components, and building scalable applications.
+
+// --- CLASS DEFINITION ---
+// A class is like a blueprint for objects.
+class Car {
+    // --- PROPERTIES ---
+    // These are variables that belong to the class/object.
+    public $brand;
+    public $color;
+
+    // --- CONSTRUCTOR ---
+    // This special method is automatically called when an object is created.
+    public function __construct($brand, $color) {
+        $this->brand = $brand; // $this refers to the current object
+        $this->color = $color;
+    }
+
+    // --- METHOD ---
+    // A function defined inside a class.
+    public function displayInfo() {
+        echo "Brand: " . $this->brand . ", Color: " . $this->color . "<br>";
+    }
+}
+
+// --- OBJECT CREATION ---
+// Creating instances (objects) from the class.
+$car1 = new Car("Toyota", "Red");
+$car2 = new Car("BMW", "Black");
+
+// --- METHOD CALL ---
+// Calling methods of the object
+$car1->displayInfo(); // Output: Brand: Toyota, Color: Red
+$car2->displayInfo(); // Output: Brand: BMW, Color: Black
+
+// --- INHERITANCE ---
+// One class can inherit the properties and methods of another class.
+class ElectricCar extends Car {
+    public $batteryCapacity;
+
+    // Override the constructor to include additional properties
+    public function __construct($brand, $color, $batteryCapacity) {
+        parent::__construct($brand, $color); // Call parent constructor
+        $this->batteryCapacity = $batteryCapacity;
+    }
+
+    // Add new method
+    public function displayFullInfo() {
+        echo "Brand: " . $this->brand . ", Color: " . $this->color . ", Battery: " . $this->batteryCapacity . " kWh<br>";
+    }
+}
+
+$tesla = new ElectricCar("Tesla", "White", 100);
+$tesla->displayFullInfo(); // Output: Brand: Tesla, Color: White, Battery: 100 kWh
+
+// --- ENCAPSULATION ---
+// We can make properties private to protect data and provide access via methods.
+class BankAccount {
+    private $balance = 0; // Private property, not accessible outside class
+
+    public function deposit($amount) {
+        if ($amount > 0) {
+            $this->balance += $amount;
+        }
+    }
+
+    public function getBalance() {
+        return $this->balance;
+    }
+}
+
+$account = new BankAccount();
+$account->deposit(200);
+echo "Account Balance: " . $account->getBalance() . "<br>"; // Output: 200
+
+// --- POLYMORPHISM ---
+// Different classes can have methods with the same name but different behavior.
+class Animal {
+    public function speak() {
+        echo "Animal speaks<br>";
+    }
+}
+
+class Dog extends Animal {
+    public function speak() {
+        echo "Dog barks<br>";
+    }
+}
+
+class Cat extends Animal {
+    public function speak() {
+        echo "Cat meows<br>";
+    }
+}
+
+$animals = [new Animal(), new Dog(), new Cat()];
+foreach ($animals as $animal) {
+    $animal->speak();
+    // Output:
+    // Animal speaks
+    // Dog barks
+    // Cat meows
+}
+
+// --- INTERFACE ---
+// Interface defines methods a class must implement.
+interface Logger {
+    public function log($message);
+}
+
+class FileLogger implements Logger {
+    public function log($message) {
+        echo "Logging to a file: $message<br>";
+    }
+}
+
+$logger = new FileLogger();
+$logger->log("System started");
+
+// --- TRAIT ---
+// Traits allow code reuse across multiple classes (PHP does not support multiple inheritance).
+trait HelloTrait {
+    public function sayHello() {
+        echo "Hello from trait!<br>";
+    }
+}
+
+class Greeting {
+    use HelloTrait;
+}
+
+$greet = new Greeting();
+$greet->sayHello(); // Output: Hello from trait!
+
+?>
