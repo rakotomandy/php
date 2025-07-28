@@ -8,13 +8,13 @@
  * Checks if no file was uploaded based on error code.
  * Most reliable method.
  */
-if ($_FILES['imaga']['error'] === UPLOAD_ERR_NO_FILE) {
+if ($_FILES['image']['error'] === UPLOAD_ERR_NO_FILE) {
     // If no file is uploaded, use a default avatar
     $img = "avatar.png";
 } else {
     // Otherwise, store the uploaded file and use its name
-    $img = $_FILES['imaga']['name'];
-    move_uploaded_file($_FILES["imaga"]["tmp_name"], "uploads/" . $img);
+    $img = $_FILES['image']['name'];
+    move_uploaded_file($_FILES["image"]["tmp_name"], "uploads/" . $img);
 }
 
 
@@ -23,10 +23,10 @@ if ($_FILES['imaga']['error'] === UPLOAD_ERR_NO_FILE) {
  * Checks whether the uploaded file was really uploaded via HTTP POST.
  * Reliable for verifying the legitimacy of the upload.
  */
-if (isset($_FILES['imaga']) && is_uploaded_file($_FILES['imaga']['tmp_name'])) {
+if (isset($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
     // If a valid uploaded file is found, move it and use its name
-    $img = $_FILES['imaga']['name'];
-    move_uploaded_file($_FILES["imaga"]["tmp_name"], "uploads/" . $img);
+    $img = $_FILES['image']['name'];
+    move_uploaded_file($_FILES["image"]["tmp_name"], "uploads/" . $img);
 } else {
     // Fallback to avatar if no file
     $img = "avatar.png";
@@ -38,7 +38,7 @@ if (isset($_FILES['imaga']) && is_uploaded_file($_FILES['imaga']['tmp_name'])) {
  * Uses ?? operator to provide a fallback, and trim() to avoid blank strings.
  * Acceptable but less secure compared to previous methods.
  */
-$img = $_FILES['imaga']['name'] ?? ""; // Get name or empty string if not set
+$img = $_FILES['image']['name'] ?? ""; // Get name or empty string if not set
 $img = trim($img) !== "" ? $img : "avatar.png"; // Use avatar if blank
 
 
@@ -60,6 +60,6 @@ function getUploadedImageOrDefault($fileKey, $default = "avatar.png") {
 }
 
 // Use the helper function to assign the image
-$img = getUploadedImageOrDefault("imaga");
+$img = getUploadedImageOrDefault("image");
 
 ?>
