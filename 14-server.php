@@ -1,6 +1,4 @@
-# Creating a PHP file that explains all the commonly used $_SERVER superglobal elements with detailed comments and examples.
-
-php_server_code = """<?php
+<?php
 // ===========================
 // PHP $_SERVER Superglobal
 // ===========================
