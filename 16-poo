@@ -1,5 +1,4 @@
-# Creating a PHP lesson file on Object-Oriented Programming (OOP) with commented explanations
-oop_php_lesson = """
+
 <?php
 // ===============================
 // PHP OBJECT-ORIENTED PROGRAMMING (OOP) LESSON
