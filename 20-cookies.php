@@ -80,7 +80,7 @@ if (count($_COOKIE) > 0) {
 } else {
     echo "Cookies might be disabled";
 }
-
+// Note: This only checks if cookies are currently set, not if the browser accepts them.
 
 // ------------------------------
 // 6. Practical Example: Remember User Preference
