@@ -39,3 +39,27 @@ if ($sent) {
     echo "Email sending failed.";
 }
 ?>
+<?php
+$to = "recipient@example.com";
+$subject = "Your Order Receipt";
+
+// HTML message
+$message = "
+<html>
+<head><title>Order Confirmation</title></head>
+<body>
+  <h2>Thank you for your purchase!</h2>
+  <p>Your order has been received and is being processed.</p>
+</body>
+</html>
+";
+
+// Set headers for HTML email
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= "Content-type: text/html; charset=UTF-8\r\n";
+$headers .= "From: sales@yourcompany.com\r\n";
+
+$sent = mail($to, $subject, $message, $headers);
+
+echo $sent ? "HTML Email sent." : "HTML Email failed.";
+?>
