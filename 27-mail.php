@@ -8,7 +8,7 @@
 
 // -------------------------------
 // Step 1: Define the recipient email address
-$to = "recipient@example.com"; 
+$to = "ericrakotomandimby@gmail.com"; 
 // Replace with the actual recipient's email address
 
 // -------------------------------
@@ -40,7 +40,7 @@ if ($sent) {
 }
 ?>
 <?php
-$to = "recipient@example.com";
+$to = "ericrakotomandimby@gmail.com";
 $subject = "Your Order Receipt";
 
 // HTML message
